@@ -9,17 +9,13 @@ import ru.geekbrains.classes.obstacles.Water;
 public class Cource {
     Obstacle[] obstacles;
 
-    public Cource() {
-        this.obstacles = new Obstacle[]{
-                new Cross(5),
-                new Wall(3),
-                new Water(7)
-        };
+    public Cource(Obstacle[] obstacles) {
+        this.obstacles = obstacles;
     }
 
 
     public void doIt(Team team) {
-        System.out.println("Команда: "+team.getName()+"! на дистанции!");
+        System.out.println("Команда: " + team.getName() + "! на дистанции!");
         Participant[] participants = team.participants;
         for (Participant participant : participants) {
             for (Obstacle obstacle : obstacles) {

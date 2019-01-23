@@ -13,23 +13,15 @@ public class Team {
     }
 
 
-    public Team(String name) {
+    public Team(String name, Participant[] participants) {
         this.name = name;
-
-        this.participants = new Participant[]{
-                new Cat("Барсик", 10, 12, 0),
-                new Dog("Дружок", 20, 5, 15),
-                new Cat("Мурзик", 9, 14, 0),
-                new Robot("Вертер", 50, 50, 50),
-        };
-
+        this.participants = participants;
     }
 
     public void showResults() {
         for (Participant participant1 : participants
         ) {
             System.out.println(participant1);
-
         }
     }
 
