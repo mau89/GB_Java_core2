@@ -1,13 +1,7 @@
 package ru.geekbrains.classes;
 
-import ru.geekbrains.classes.animals.Cat;
 import ru.geekbrains.classes.animals.Cource;
-import ru.geekbrains.classes.animals.Dog;
 import ru.geekbrains.classes.animals.Team;
-import ru.geekbrains.classes.obstacles.Cross;
-import ru.geekbrains.classes.obstacles.Obstacle;
-import ru.geekbrains.classes.obstacles.Wall;
-import ru.geekbrains.classes.obstacles.Water;
 
 public class Application {
 
