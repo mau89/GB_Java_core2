@@ -5,7 +5,7 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            arrays = new String[4][4];
+            arrays = new String[4][5];
             sizeArr(arrays);
         } catch (NegativeArraySizeException e) {
             System.out.println("Нельзя создавать массив отрицательного размера");
@@ -27,28 +27,30 @@ public class Application {
         for (int i = 0; i < arrays.length; i++) {
             for (int j = 0; j < arrays[0].length; j++) {
                 try {
-                    sumArr(arrays[i][j]);
+                    sumArr(i,j,arrays[i][j]);
                 } catch (MyArrayDataException e) {
-                    System.out.println("координаты i " + i + " координаты j " + j + " значение в ячейке " + arrays[i][j]);
                     System.out.println(e);
                 }
             }
         }
     }
 
-    public static void sumArr(String i) throws MyArrayDataException {
+    public static void sumArr(int i,int j, String value) throws MyArrayDataException {
         try {
-            int a = Integer.parseInt(i);
+            int a = Integer.parseInt(value);
             sum += a;
         } catch (NumberFormatException e) {
-            throw new MyArrayDataException("Ошибка числа в массиве ");
+            throw new MyArrayDataException(i,j,value);
         }
     }
 
     public static void checkArr(String[][] arrays) throws MyArraySizeException {
-        if (arrays.length != 4 || arrays[0].length != 4) {
-            throw new MyArraySizeException("Массив не равен 4*4");
+        for (int i = 0; i < arrays.length; i++) {
+                if (arrays.length != 4 || arrays[i].length != 4) {
+                    throw new MyArraySizeException("Массив не равен 4*4");
+            }
         }
+
     }
 
     public static void sizeArr(String[][] arrays) throws MyArraySizeException, MyArrayDataException {
