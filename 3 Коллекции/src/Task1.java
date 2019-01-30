@@ -23,7 +23,7 @@ public class Task1 {
         Set<String> set = new LinkedHashSet<>(strings);
         System.out.printf("%n");
         for (String linkedHashMap : set) {
-            System.out.printf("слово %s количество повторений %d %n", linkedHashMap, Collections.frequency(strings, linkedHashMap));
+            System.out.printf("Cлово \"%s\" количество повторений - %d; %n", linkedHashMap, Collections.frequency(strings, linkedHashMap));
         }
     }
 }
