@@ -1,1 +1,0 @@
-# GB_Java_core2
