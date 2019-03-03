@@ -129,21 +129,14 @@ public class MainWindow extends JFrame implements MessageSender {
     }
 
     @Override
-    public void newUser(List<String> newUser) {
-       // List<String> newUser=new ArrayList<>();
-//        newUser.add("1");
-//        newUser.add("2");
-//        newUser.add("3");
-//        newUser.add("4");
+    public void newUsers(List<String> newUser) {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //userList.setListData(new String[]{"1", "2", "3"});
                 for (int i = 0; i < newUser.size(); i++) {
                     userListModel.add(userListModel.size(),newUser.get(i));
                 }
-                //userListModel.add(userListModel.size(),userList);
                 userList.ensureIndexIsVisible(userListModel.size()-1);
             }
         });
