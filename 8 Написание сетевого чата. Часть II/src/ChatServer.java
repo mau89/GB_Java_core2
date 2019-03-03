@@ -1,6 +1,8 @@
 
 import auth.AuthService;
 import auth.AuthServiceImpl;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
+import sun.awt.SunHints;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -10,6 +12,7 @@ import java.net.Socket;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ChatServer {
 
@@ -91,17 +94,17 @@ public class ChatServer {
 
     public void broadcastUserConnected(String userName) throws IOException {
         // TODO сообщать о том, что конкретный пользователь подключился
-        for (Map.Entry<String, ClientHandler> aaa: clientHandlerMap.entrySet()) {
-            aaa.getValue().sendUserList(userName);
-            aaa.getValue().sendMessage("Server","Подключился новый пользователь "+userName);
+        for (ClientHandler handler: clientHandlerMap.values()) {
+            handler.sendUserList(clientHandlerMap.values().stream().collect(Collectors.toList()));
+            handler.sendMessage("Server","Подключился новый пользователь "+userName);
         }
     }
 
     public void broadcastUserDisconnected(String userName) throws IOException {
         // TODO сообщать о том, что конкретный пользователь отключился
-        for (Map.Entry<String, ClientHandler> aaa: clientHandlerMap.entrySet()) {
-            aaa.getValue().sendUserList(userName);
-            aaa.getValue().sendMessage("Server","Отключился пользователь "+userName);
+        for (ClientHandler handler: clientHandlerMap.values()) {
+            handler.sendUserList(clientHandlerMap.values().stream().collect(Collectors.toList()));
+            handler.sendMessage("Server","Отключился пользователь "+userName);
         }
     }
 }
