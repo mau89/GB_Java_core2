@@ -16,6 +16,6 @@ public interface MessageSender {
 
     // TODO добавить метод для оповещения о новом пользователе
 
-    void newUser(List<String> newUser);
+    void newUsers(List<String> newUser);
 
 }
