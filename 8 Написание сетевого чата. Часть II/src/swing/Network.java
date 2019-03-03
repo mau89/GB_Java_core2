@@ -7,6 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,10 +53,9 @@ public class Network implements Closeable {
                             messageSender.submitMessage(msg);
                         } else if (text.startsWith("/userlist")) {
                             // TODO обновить список подключенных пользователей
-                            List<String> newUser1=new ArrayList<>();
-
-                            newUser1.add(text.substring(10));
-                            messageSender.newUser(newUser1);
+                            List<String> newUser1 = new ArrayList<>();
+                            newUser1 = Arrays.asList(text.substring(10).toString().split("\\s*:USER:\\s*"));
+                            messageSender.newUsers(newUser1);
 
                         }
                     } catch (IOException e) {
