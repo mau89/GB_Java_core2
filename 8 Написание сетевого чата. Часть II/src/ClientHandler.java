@@ -2,6 +2,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -71,8 +73,13 @@ public class ClientHandler {
         out.writeUTF(String.format(MESSAGE_SEND_PATTERN, userTo, msg));
     }
 
-    public void sendUserList(String msg) throws IOException {
-        out.writeUTF(String.format(USER_LIST_PATTERN, msg));
+    public void sendUserList(List msg) throws IOException {
+        ArrayList<String > arrayList=new ArrayList<>(msg);
+        String msg1="";
+        for (int i = 0; i < msg.size(); i++) {
+            msg1=msg1+((ClientHandler) msg.get(i)).username+":USER:";
+        }
+        out.writeUTF(String.format(USER_LIST_PATTERN, msg1));
     }
 
     public String getUsername() {
